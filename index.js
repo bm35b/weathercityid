@@ -22,7 +22,7 @@ app.post("/", function(req, res) {
         const units = "imperial";
         const id ="id";
         const apiKey = "ed480d013695eee01596982a8beaf7ee";
-        const url = "https://api.openweathermap.org/data/2.5/weather?id=" + cityid +  "&units=" + units + "&APPID=" + apiKey;
+        const url = "https://api.openweathermap.org/data/2.5/weather?id=" + cityid + "2172797" "&units=" + units + "&APPID=" + apiKey;
     
     // this gets the data from Open WeatherPI
     https.get(url, function(response){
