@@ -22,7 +22,7 @@ app.post("/", function(req, res) {
         const units = "imperial";
         const id ="id";
         const apiKey = "ed480d013695eee01596982a8beaf7ee";
-        const url = "https://api.openweathermap.org/data/2.5/weather?id=" + cityid + "2172797" "&units=" + units + "&APPID=" + apiKey;
+        const url = "https://api.openweathermap.org/data/2.5/weather?id=" + cityid + "&units" + units + "&APPID=" + apiKey;
     
     // this gets the data from Open WeatherPI
     https.get(url, function(response){
@@ -36,6 +36,7 @@ app.post("/", function(req, res) {
             const windspeed = weatherData.wind.speed;
             const winddirection = weatherData.wind.deg;
             const cloud = weatherData.clouds.all;
+           const humidity = weatherData.main.humidity;
             const weatherDescription = weatherData.weather[0].description;
             const icon = weatherData.weather[0].icon;
             const imageURL = "http://openweathermap.org/img/wn/" + icon + "@2x.png";
@@ -43,7 +44,8 @@ app.post("/", function(req, res) {
             // displays the output of the results
             res.write("<h1> The weather is " + weatherDescription + "<h1>");
             res.write("<h2>The Temperature in " + city + " " + " is " + temp + " Degrees Fahrenheit<h2>");
-            res.write("<h3> The Windspeed is" + " " + windspeed + "." + "The Wind direction is " + " " +  winddirection + "." + "The Cloudiness is" + " " +  cloud + "." );
+          res.write("<h2> The humidity is " + humidity + "%<h2>");
+            res.write("<h3> The Windspeed is" + " " + windspeed + "." + "The Wind direction is " + " " +  winddirection + "." + "The Cloudiness is" + " " +  cloud + "%." );
             res.write("<img src=" + imageURL +">");
             res.send();
         });
